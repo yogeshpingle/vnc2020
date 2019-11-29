@@ -1,0 +1,174 @@
+BODY
+{
+    FONT-SIZE: 10px;
+    FONT-FAMILY: Verdana
+}
+MARQUEE
+{
+    FONT-SIZE: 10px
+}
+TABLE
+{
+    FONT-SIZE: 10px;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif
+}
+TD.content
+{
+    FONT-SIZE: 15px;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif
+}
+A.menu
+{
+    FONT-SIZE: 10px;
+    COLOR: blue;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    TEXT-DECORATION: none
+}
+a.menu:hover {font-weight:bold;color:#FF0000;text-decoration:none;}
+TABLE.menu
+{
+    BORDER-RIGHT: #ffffff 1px solid;
+    BORDER-TOP: #ffffff 1px solid;
+    FONT-SIZE: 10px;
+    BORDER-LEFT: #ffffff 1px solid;
+    BORDER-BOTTOM: #ffffff 1px solid;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif
+}
+TD.navon
+{
+    BORDER-RIGHT: #ffffff 1px solid;
+    PADDING-RIGHT: 2px;
+    BORDER-TOP: #ffffff 1px solid;
+    PADDING-LEFT: 4px;
+    BORDER-LEFT: #ffffff 1px solid;
+    CURSOR: hand;
+    PADDING-TOP: 2px;
+    BORDER-BOTTOM: #ffffff 2px solid;
+    BACKGROUND-COLOR: #e6e6e6
+}
+TD.navoff
+{
+    BORDER-RIGHT: #ffffff 1px solid;
+    PADDING-RIGHT: 2px;
+    BORDER-TOP: #ffffff 1px solid;
+    PADDING-LEFT: 4px;
+    BORDER-LEFT: #ffffff 1px solid;
+    CURSOR: hand;
+    PADDING-TOP: 2px;
+    BORDER-BOTTOM: #ffffff 1px solid;
+    BACKGROUND-COLOR: #ffffff
+}
+BODY.form
+{
+    FONT-SIZE: small;
+    BACKGROUND: #ffffff;
+    COLOR: #333;
+    FONT-FAMILY: arial, sans-serif;
+    TEXT-ALIGN: left
+}
+TABLE.form
+{
+    FONT-SIZE: 12px;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif
+}
+H1
+{
+    PADDING-RIGHT: 0px;
+    PADDING-LEFT: 6px;
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 15px;
+    PADDING-BOTTOM: 0px;
+    MARGIN: 0px;
+    COLOR: #000000;
+    PADDING-TOP: 5px;
+    FONT-FAMILY: arial, sans-serif
+}
+INPUT
+{
+    FONT-SIZE: 12px;
+    FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+TEXTAREA
+{
+    FONT-SIZE: 12px;
+    FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.microfont
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 10px;
+    COLOR: #808080;
+    FONT-FAMILY: arial, sans-serif
+}
+.asterix
+{
+    COLOR: #ff0000
+}
+.error
+{
+    DISPLAY: none;
+    FONT-SIZE: 12px;
+    COLOR: #d50000
+}
+.hidden
+{
+    DISPLAY: none
+}
+TD.faq
+{
+    FONT-SIZE: 15px;
+    FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif
+}
+A.faq
+{
+    TEXT-DECORATION: none
+}
+H1.faq
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 16pt;
+    COLOR: #000000;
+    BORDER-BOTTOM: 1px solid;
+    FONT-FAMILY: Arial
+}
+A.guidelines
+{
+    TEXT-DECORATION: none
+}
+TD.generalTxt
+{
+    FONT-SIZE: 10pt;
+    FONT-FAMILY: Verdana;
+    TEXT-ALIGN: justify
+}
+H1.generalHead
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 14pt;
+    COLOR: blue;
+    FONT-FAMILY: Verdana;
+    TEXT-ALIGN: center
+}
+H1.redHead
+{
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 14pt;
+	COLOR: red;
+	FONT-FAMILY: Verdana;
+	TEXT-ALIGN: center;
+	font-style: italic;
+}
+P.generalTxt
+{
+    FONT-SIZE: 10pt;
+    FONT-FAMILY: Verdana;
+    TEXT-ALIGN: justify;
+}
+
+P.centerTxt
+{
+    FONT-SIZE: 10pt;
+    FONT-FAMILY: Verdana;
+    TEXT-ALIGN: center;
+}
+

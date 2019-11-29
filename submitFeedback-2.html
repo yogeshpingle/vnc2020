@@ -1,0 +1,822 @@
+
+<html>
+
+
+<!-- Mirrored from bvicam.ac.in/indiacom/submitFeedback.asp by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 18 Oct 2019 11:01:56 GMT -->
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>INDIACom</title>
+<link rel="stylesheet" type="text/css" href="nexgen.css">
+<script language="JavaScript" src="XmlHttpObject.js"></script>
+<script language="JavaScript" type="text/javascript">
+
+function resetError (txtControl, divError) {
+	txtControl.style.backgroundColor = "";
+	divError.style.display = "none";
+}
+
+function setError (txtControl, divError) {
+   	txtControl.style.backgroundColor = "#FFFF99";
+   	divError.style.display = "block";
+}
+
+function resetForm()
+{
+	//Another method reload form
+}
+
+validForm = true;
+/*
+validForm is used by checkIfNotEmpty() & validateForm() functions...
+*/
+
+
+function checkIfNotEmpty(txtControl, divError) {
+	if(txtControl.value == "") {
+    	txtControl.style.backgroundColor = "#FFFF99";
+    	divError.style.display = "block";
+    	validForm = false;
+    	return false;
+    }
+    return true;
+}
+
+function checkSize(txtControl, size, FieldName)
+{
+	if (txtControl.value.length > size)
+	{
+		msg = "<br>Maximum permissible length of '" + FieldName + "' field is " + size + ". Please reduce the string.";
+		document.getElementById("divMessages").innerHTML += msg
+		validForm = false;
+		return false;
+	}
+	return true;
+}
+
+function checkIfAlphabetic(txtControl, divError)
+{
+	var charpos = txtControl.value.search("[^A-Za-z .]"); 
+	if(txtControl.value.length > 0 &&  charpos >= 0) 
+	{
+	   	setError(txtControl, divError);
+	   	validForm = false;
+		return false;
+	}
+	return true;
+}
+
+function checkIfNumeric(txtControl, divError)
+{
+	var charpos = txtControl.value.search("[^0-9]"); 
+	if(txtControl.value.length > 0 &&  charpos >= 0) 
+	{
+	   	setError(txtControl, divError);
+	   	validForm = false;
+		return false;
+	}
+	return true;
+}
+
+function checkIfAlphaNumeric(txtControl, divError)
+{
+	var charpos = txtControl.value.search("[^A-Za-z0-9"); 
+	if(txtControl.value.length > 0 &&  charpos >= 0) 
+	{
+	   	setError(txtControl, divError);
+	   	validForm = false;
+		return false;
+	}
+	return true;
+}
+
+
+
+function checkExt(strPath, strExt)
+{
+	i = strPath.lastIndexOf(".");
+	ext = strPath.slice(i);
+	strExt = strExt.toLowerCase();
+	ext = ext.toLowerCase()
+	if (strExt == ext)//( (strExt.Length == ext.Length) && (strExt.indexOf(ext) == 0) )
+		return true;
+	else
+		return false;
+}
+
+function validateEmail(txtControl, divError)
+{
+    mEmail = txtControl.value;
+    var splitted = mEmail.match("^(.+)@(.+)$");
+    if(splitted == null) 
+    {
+    	setError(txtControl, divError);
+    	return false;
+    }
+    if(splitted[1] != null )
+    {
+		var regexp_user=/^\"?[\w-_\.]*\"?$/;
+		if(splitted[1].match(regexp_user) == null)
+		{
+			setError(txtControl, divError);
+			return false;
+		}
+    }
+    if(splitted[2] != null)
+    {
+		var regexp_domain=/^[\w-\.]*\.[A-Za-z]{2,4}$/;
+		if(splitted[2].match(regexp_domain) == null) 
+		{
+			var regexp_ip =/^\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\]$/;
+			if(splitted[2].match(regexp_ip) == null)
+			{
+				setError(txtControl, divError);
+				return false;
+			}
+		}
+		return true;
+	}
+	return false;
+}
+
+// validateForm() wont be called if document.submitFeedback.submit() is called
+function validateForm() {
+    validForm = true;
+	
+	with(document.submitFeedback){
+
+		//txtPhone.value = txtPhone1.value + "-" + txtPhone2.value + "-" + txtPhone3.value;
+
+		// Reset All Errors
+		resetError(txtName,NameError);
+		resetError(txtEmail,EmailError);
+		resetError(txtMobile,MobileError);
+		resetError(txtOrganization,OrganizationError);
+		resetError(txtComments,CommentError);
+
+		// Check for blank fields
+		checkIfNotEmpty(txtName,NameError);
+		checkIfNotEmpty(txtEmail,EmailError);
+		//checkIfNotEmpty(txtComments,CommentError);
+		
+		// Size Check
+		checkSize(txtName, 100, "Name");
+		checkSize(txtEmail, 255, "Email");
+		checkSize(txtMobile, 20, "Mobile");
+		checkSize(txtOrganization, 150, "Organization");
+		checkSize(txtComments, 1000, "Email");
+
+		// Type Check
+		checkIfAlphabetic(txtName, NameError);
+		validateEmail(txtEmail,EmailError);
+		checkIfNumeric(txtMobile, MobileError);
+		//checkIfAlphabetic(txtOrganization, OrganizationError);
+   	}
+	//alert (txtName.value + " " + txtEmail.value );
+    return validForm;
+}
+
+</script>
+</head>
+
+<!--<body onload="document.forms['submitFeedback'].reset();validateForm()">-->
+<body>
+
+<div align="center">
+<table border="0" width="760" cellpadding="0" id="table2" cellspacing="0" height="187">
+    <tr>
+    	
+		<td align="right" height="30" style="font-family: Verdana; font-size: 10px; padding-top: 0; padding-bottom: 0">
+        <b>Welcome, Guest [<a href="login.html">log in</a>]</b></td>
+	
+	</tr>
+
+	<tr>
+		<td height="120" style="margin-top: 0; margin-bottom: 0">	
+			<img border="0" src="images/banner-2020.jpg" width="760" >
+	</td>
+	</tr>
+	
+<!--
+	<tr>
+	<td style="border-top-style: solid; border-bottom-style: solid; margin-top: 0; margin-bottom: 0; padding: 0" 		bordercolor="#FF9900" bordercolorlight="#FF9900" bordercolordark="#FF9900">
+		<img width="760" border="0" src="images/banner.jpg" >
+	</td>
+	</tr>
+-->	
+	</tr>
+	<tr>
+	<td style="margin-top: 0; margin-bottom: 0; padding: 0" bordercolor="#FF9900" bordercolorlight="#FF9900" bordercolordark="#FF9900">
+		<img src="images/bottom-banner.jpg" width="760" border="0" usemap="#bannerMap" >    </td>
+    </tr>
+</table>
+</div>
+<map name="bannerMap" id="bannerMap">
+  <!--area shape="rect" coords="15,19,77,80" href="http://fea.kau.edu.sa/Default.aspx?Site_ID=120&amp;Lng=EN" target="_blank" />
+  <area shape="rect" coords="88,28,204,77" href="http://www.igi-global.com/journals/" target="_blank" />
+  <area shape="rect" coords="212,25,364,81" href="http://www.theiet.org/" target="_blank" />
+<area shape="rect" coords="408,21,471,82" href="http://www.isteonline.in/" target="_blank" />
+<area shape="rect" coords="502,20,573,86" href="http://www.iete.org/" target="_blank" />
+<area shape="rect" coords="604,22,667,82" href="http://www.csi-india.org/" target="_blank" />
+<area shape="rect" coords="686,14,759,82" href="http://ipu.ac.in" target="_blank" /-->
+  <area shape="rect" coords="21,22,142,74" href="http://www.igi-global.com/journals/" target="_blank" />
+  <area shape="rect" coords="195,25,357,81" href="http://www.theiet.org/" target="_blank" />
+<area shape="rect" coords="381,21,454,82" href="http://www.isteonline.in/" target="_blank" />
+<area shape="rect" coords="484,20,573,86" href="http://www.iete.org/" target="_blank" />
+<area shape="rect" coords="593,22,667,82" href="http://www.csi-india.org/" target="_blank" />
+<area shape="rect" coords="686,14,759,82" href="http://ipu.ac.in/" target="_blank" />
+</map>
+<div align="center">
+
+<table border="0" width="760" cellspacing="0" cellpadding="0" id="table2">
+	<tr>
+	<td width="760" background="images/marquee.jpg" 
+		style="background-image: url('images/marquee.jpg'); background-repeat: no-repeat; background-position: left center;vertical-align:middle" align="center">
+
+	<!--marquee scrollamount="1" scrolldelay="50" style="color:#C00000" behavior="alternate">
+	New Paper Submission is Closed. Thank you very much for overwhelming response.
+	</marquee-->
+	<marquee scrollamount="1" scrolldelay="50" style="color:#C00000" behavior="alternate">
+	INDIACom-2020 has been announced. Last date to submit paper is 18<sup>th</sup> November, 2019.
+	</marquee>
+	</td>
+</tr>
+	<tr>
+		<td valign="bottom">
+		<img border="0" src="images/bar.jpg" width="760" height="10"></td>
+	</tr>
+</table>
+</div>
+<div align="center">
+	<table width="760" style="border-collapse: collapse; border-top-width:3px; border-bottom-style:solid; border-bottom-width:3px" bordercolor="#808080" cellpadding="2" id="table2" cellspacing="0">
+		<tr>
+			<td width="160" height="100%" valign="top">
+			<style type="text/css">
+
+.menuImpDate {color: #FF0000; font-weight: bold; }
+</style>
+<table width="100%" height="1442" cellpadding="0" class="menu" cellspacing="2" bgcolor="#D8E4F8">
+ 	<tr>
+		<td width="8" height="10">&nbsp;</td>
+		<td height="10"></td>
+		<td width="8" height="10">&nbsp;</td>
+	</tr>
+	
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td  class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" height="19" >
+              <a class="menu" href="latest_news.html">News <img src="images/new.gif" /></a> </td>
+		<td width="8" height="19">&nbsp;</td>
+	</tr>
+	
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td  class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" height="19" >
+              <a class="menu" href="abstract-indexing.html" target="scopus">Abstracting &amp; Indexing </a> </td>
+		<td width="8" height="19">&nbsp;</td>
+	</tr>
+	
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td  class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" height="19" >
+              <a class="menu" target="_blank" href="https://www.ieee.org/conferences/organizers/conf-app.html?confRecNum=49435">IEEE Conference ID - 49435 </a></td>
+		<td width="8" height="19">&nbsp;</td>
+	</tr>
+
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td  class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" height="19" >
+              <a class="menu" href="http://bvicam.ac.in/indiacom">Home</a>		</td>
+		<td width="8" height="19">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+				<td height="19" class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" >
+                <a class="menu" href="important%20dates.html">Important Dates</a></td>
+		<td width="8" height="19">&nbsp;</td>
+	</tr>
+	
+	
+	<tr>
+		<td width="8" height="8" >&nbsp;</td>
+		<td  class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" height="8" >
+              <a class="menu" href="callForPapers.html">Call for Papers <img src="images/new.gif" /><a href="loginReqSubmitPaper.html" class="menu"></a></td>
+		<td width="8" height="19" rowspan="2">&nbsp;</td>
+	</tr>
+	 <!--tr>
+	   <td width="8" height="9" >&nbsp;</td>
+	   <td  class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" height="9" > <a class="menu" href="downloads/Poster for INDIACom-2020.pdf">INDIACom-2020 Poster</a></td>
+  </tr-->
+<tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td  class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" height="19" >
+              <a class="menu" href="ICIEM.html">ICIEM-2020 <img src="images/new.gif" /></a></td>
+		<td width="8" height="19">&nbsp;</td>
+  </tr>
+	
+	
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td height="19" class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" >
+              <a class="menu" href="addMember.html">Get Membership <img src="images/new.gif" /></a>		</td>
+		<td width="8" height="19">&nbsp;</td>
+	</tr>
+	
+	
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td height="19" class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" >
+		
+           <a class="menu" href="login.html" >Member Login </a>
+				 </td>
+		<td width="8" height="19">&nbsp;</td>
+	</tr>
+
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td height="19" class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" >
+                <a href="loginReqSubmitPaper.html" class="menu">Submit Special Session Request <!--img src="images/new.gif" /--> </a>		</td>
+		<td width="8" height="19">&nbsp;</td>
+	</tr>
+	
+	
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td height="19" class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" >
+                <a href="loginReqSubmitPaper.html" class="menu">Submit Paper<img src="images/new.gif" /></a></td>
+		<td width="8" height="19">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td  class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" height="19" >
+              <a class="menu" href="specialSessions.html">Special Sessions </a>		      <a href="loginReqSubmitPaper.html" class="menu"><!--img src="images/new.gif" alt=" " /--></a></td>
+		<td width="8" height="19">&nbsp;</td>
+	</tr>
+	
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+				<td height="19" class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" >
+                <a class="menu" href="Registration.html">Registration  </a></td>
+		<td width="8" height="19">&nbsp;</td>
+	</tr>
+	
+	
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+				<td height="19" class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" >
+                <a class="menu" href="PaymentModes.html">Payment Modes  </a><a class="menu" href="Conference%20Secretariate.html"></a></td>
+		<td width="8" height="19">&nbsp;</td>
+	</tr>
+	
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+				<td height="19" class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" >
+                <a class="menu" href="Conference%20Secretariate.html">Conference 
+                Secretariat  <img src="images/new.gif" /></a></td>
+		        <td width="8" height="19">&nbsp;</td>
+	</tr>
+	
+	 <tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td height="19" class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
+            <a class="menu" href="ReviewProcess.html">Review Process, Publication & Indexing</a></td>
+		</td>
+		<td width="8" height="19">&nbsp;</td>
+    </tr>
+	
+	
+	
+	
+	
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td height="19" class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" >
+              <a class="menu" href="INDIAComOld.html">INDIACom History</a>		</td>
+		<td width="8" height="19">&nbsp;</td>
+	</tr>
+
+   
+
+	
+	
+	
+	
+	 <tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td height="19" class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" >
+              <a class="menu" href="Downloads.html">Downloads </a></td>
+		<td width="8" height="19">&nbsp;</td>
+	</tr>
+
+	
+	
+		
+	
+	   
+
+	
+
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td  class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" height="19" >
+              <a class="menu" href="invitedSpeakers.html">Invited Speakers</a>		      </td>
+		<td width="8" height="19">&nbsp;</td>
+	</tr>
+
+
+<!--	
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td  class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" height="19" >
+              <a class="menu" href="Keynote Speaker.asp">Keynote Speaker (INDIACom-2016)</a></td>
+		<td width="8" height="19">&nbsp;</td>
+	</tr>
+-->	
+
+	
+	
+
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td height="19" class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
+            <a class="menu" href="Procedural%20Guidelines.html">Guidelines to Submit Paper</a></td>
+		</td>
+		<td width="8" height="19">&nbsp;</td>
+    </tr>
+    
+ <!--
+    <tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td height="19" class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
+            <a class="menu" href="Technical Guidelines.asp">Guidelines for Paper Formatting</a></td>
+		</td>
+		<td width="8" height="19">&nbsp;</td>
+    </tr>
+ -->   
+    <tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td height="19" class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
+            <a class="menu" href="loginReqSubmitPaper.html">Join Technical Programme 
+            Committee</a></td>
+		</td>
+		<td width="8" height="19">&nbsp;</td>
+    </tr>
+    
+   
+     <tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td height="19" class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
+            <a class="menu" href="PlagiarismPolicy.html">Plagiarism Policy</a></td>
+		</td>
+		<td width="8" height="19">&nbsp;</td>
+    </tr>
+    
+	
+
+
+
+
+     <tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td height="19" class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
+              <a class="menu" href="committees.html">Committees</a></td>
+		<td width="8" height="19">&nbsp;</td>
+	 </tr>
+
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td height="19" class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" >
+               <a class="menu" href="Sponsors.html">Our Supporters</a></td>
+		<td width="8" height="19">&nbsp;</td>
+	</tr>
+
+
+
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+				<td height="19" class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" >
+                <a class="menu" href="INDIACom%20Proceedings.html">Proceedings (Archive)</a></td>
+		<td width="8" height="19">&nbsp;</td>
+	</tr>
+
+<tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td height="19" class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
+            <a class="menu" href="Accommodation.html">Accommodation </a><a href="loginReqSubmitPaper.html" class="menu"></a></td>
+		<td width="8" height="19">&nbsp;</td>
+  </tr>
+	
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td height="19" class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
+            <a class="menu" href="reaching%20BVICAM.html">How to reach Venue</a></td>
+		<td width="8" height="19">&nbsp;</td>
+	</tr>
+
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td height="19" class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" >
+               <a class="menu" href="faqs.html">FAQs</a></td>
+		<td width="8" height="19">&nbsp;</td>
+	</tr>
+
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td height="19" class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
+             <a class="menu" href="SubmitFeedback.html">Submit Feedback </a></td>
+		<td width="8" height="25">&nbsp;</td>
+  </tr>
+  
+
+    <tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td height="19" class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
+             <a class="menu" href="Contact%20Us.html">Contact Us</a></td>
+		<td width="8" height="19">&nbsp;</td>
+  </tr>
+
+
+<!-- Links get over-->
+	<tr>
+		<td width="8" height="53" >&nbsp;</td>
+		<td height="53" >&nbsp;<p align="center">
+        <font size="2" ><b>Important Dates</b></font></td>
+		<td width="8" height="53" >&nbsp;</td>
+	</tr>
+	<tr><td height="19" colspan="3">&nbsp;</td></tr>
+	<tr>
+		<td width="8" >&nbsp;</td>
+		<td height="8" valign="bottom"><div align="center">Submission of <br/>
+	    Full Length Paper</div></td>
+		<td width="8" >&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="8" >&nbsp;</td>
+		<td height="8" valign="top"><div align="center"><span class="menuImpDate">18<sup>th</sup> November, 2019</span></div></td>
+		<td width="8" >&nbsp;</td>
+	</tr>
+	<tr><td height="10" colspan="3">&nbsp;</td></tr>
+	<tr>
+		<td width="8" >&nbsp;</td>
+		<td height="8" valign="bottom"><div align="center">Paper Acceptance<br/>
+	    Notification</div></td>
+		<td width="8" >&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="8" >&nbsp;</td>
+		<td height="8" valign="top"><div align="center"><span class="menuImpDate">03<sup>rd</sup> February, 2020</span></div></td>
+		<td width="8" >&nbsp;</td>
+	</tr>
+	<tr><td height="10" colspan="3">&nbsp;</td></tr>
+
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td height="19" valign="bottom"><div align="center">Submission of Final Version of Paper </div></td>
+		<td width="8" height="19">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="8" height="20">&nbsp;</td>
+		<td height="20" valign="top"><div align="center"><span class="menuImpDate">12<sup>th</sup> February, 2020</span></div></td>
+		<td width="8" height="20" >&nbsp;</td>
+	</tr>
+	<tr><td height="19" colspan="3">&nbsp;</td></tr>
+
+	<tr>
+		<td width="8" height="19" >&nbsp;</td>
+		<td height="19" valign="bottom"><div align="center">
+			Registration Deadline<br />
+		  <font size="-2">Early Bird </font>		
+		  </div></td>
+		<td width="8" height="19" >&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="8" height="20" >&nbsp;</td>
+		<td height="20" valign="top"><div align="center"><span class="menuImpDate">12<sup>th</sup> February, 2020</span></div></td>
+		<td width="8" height="20" >&nbsp;</td>
+	</tr>
+
+	<tr><td height="19" colspan="3">&nbsp;</td></tr>
+	<tr>
+		<td width="8" height="38" >&nbsp;</td>
+		<td height="38" valign="bottom"><div align="center">PPT Submission<br/>
+	    Deadline</div></td>
+		<td width="8" height="38" >&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="8" height="20" >&nbsp;</td>
+		<td height="20" valign="top"><div align="center"><span class="menuImpDate">28<sup>th</sup> February, 2020</span> </div></td>
+		<td width="8" height="20" >&nbsp;</td>
+	</tr>
+
+	<tr><td height="19" colspan="3">&nbsp;</td></tr>
+	<tr>
+		<td width="8" height="19">&nbsp;</td>
+		
+		<td width="8" height="19">&nbsp;</td>
+	</tr>
+	<tr>
+		<td width="8" height="19">&nbsp;</td>
+		<td height="19">&nbsp;</td>
+		<td width="8" height="19">&nbsp;</td>
+	</tr>
+</table>
+ 
+			</td>
+			<td width="600" align="center" class="content" valign="top">
+				<table>
+				<tr>
+					<td colspan="2" style="color: #FF0000" align="center">
+					</td>
+				</tr>
+				<tr>
+				<td colspan="2">
+				<h1 class="generalHead">Submit Feedback<br/></h1>
+				</td>
+				</tr>
+
+			<tr>
+			<td>
+			<span class="microfont">Fields marked with an asterisk
+			<span class="asterix">*</span> are required.<br></span></h1>
+			 Note: - <span style="font-size:12px;color:red"><strong>If you are an existing member, Kindly [<a class="faq" href="login.html">Login</a>] before submitting the feedback.</strong></font>
+
+			<form method="POST" enctype="text/html" name="submitFeedback" onSubmit="return validateForm()" action="http://bvicam.ac.in/indiacom/submitFeedback.asp">
+				<table class="form" border="0" width="600" id="table4" cellpadding="5">
+				<tr>
+						<td align="center" colspan="2"><a name="messages"></a>
+						<div id="divMessages" style="color: #FF0000">
+						</div>
+						</td>
+					</tr>
+					<tr>
+						<td width="240" align="right"><span class="asterix">*
+						</span>Name</td>
+						<td>
+						<input type="text" id="txtName" name="txtName" size="30" value="" 
+						
+						><div class="error" id="NameError">
+							(Please enter your name.)</div>
+						</td>
+					</tr>
+
+					<tr>
+						<td width="240" align="right"><span class="asterix">*
+						</span>E-mail</td>
+						<td>
+						<input type="text" id="txtEmail" name="txtEmail" size="30" value="" 
+						
+						><div class="error" id="EmailError">
+							(Please enter a valid email.)</div>
+						</td>
+					</tr>
+
+
+					<tr>
+						<td width="240" align="right">Mobile No.</td>
+						<td>
+						<input type="text" id="txtMobile" name="txtMobile" size="30" value="" 
+						
+						><div class="error" id="MobileError">
+							(Please enter a valid moblie no. Only number allowed.)</div>
+						</td>
+					</tr>
+
+
+					<tr>
+						<td width="240" align="right">Organization</td>
+						<td>
+						<input type="text" id="txtOrganization" name="txtOrganization" size="60" value="" 
+						
+						><div class="error" id="OrganizationError">
+							(Allowed charaters: A-Z a-z space .<br/>Maximum length 100.</div>
+						</td>
+					</tr>
+
+					 <tr>
+						<td width="240" align="right" valign="top">Conference Information<br/> 
+                        (at Website)<br>
+						<td valign="top" >
+						<select id="ddRatingAttributeA" name="ddRatingAttributeA"  size="1">
+						<option value="E">Below Average</option>
+						<option value="D">Average</option>
+						<option value="C">Good</option>
+						<option value="B">Very Good</option>
+						<option value="A" selected="true">Excellent</option>
+						</select>
+					    </td>
+					</tr>
+					
+					<tr>
+						<td width="240" align="right" valign="top">Paper Submission Process<br>
+						<td valign="top" >
+						<select id="ddRatingAttributeB" name="ddRatingAttributeB"  size="1">
+						<option value="E">Below Average</option>
+						<option value="D">Average</option>
+						<option value="C">Good</option>
+						<option value="B">Very Good</option>
+						<option value="A" selected="true">Excellent</option>
+						</select>
+					    </td>
+					</tr>
+					
+					<tr>
+						<td width="240" align="right" valign="top">Registration Procedure<br>
+						<td valign="top" >
+						<select id="ddRatingAttributeC" name="ddRatingAttributeC"  size="1">
+						<option value="E">Below Average</option>
+						<option value="D">Average</option>
+						<option value="C">Good</option>
+						<option value="B">Very Good</option>
+						<option value="A" selected="true">Excellent</option>
+						</select>
+					    </td>
+					</tr>
+					
+					<tr>
+						<td width="240" align="right" valign="top">Conference Organization<br>
+						<td valign="top" >
+						<select id="ddRatingAttributeD" name="ddRatingAttributeD"  size="1">
+						<option value="E">Below Average</option>
+						<option value="D">Average</option>
+						<option value="C">Good</option>
+						<option value="B">Very Good</option>
+						<option value="A" selected="true">Excellent</option>
+						</select>
+					    </td>
+					</tr>
+					
+					<tr>
+						<td width="240" align="right" valign="top">Conference Proceedings<br>
+						<td valign="top" >
+						<select id="ddRatingAttributeE" name="ddRatingAttributeE"  size="1">
+						<option value="E">Below Average</option>
+						<option value="D">Average</option>
+						<option value="C">Good</option>
+						<option value="B">Very Good</option>
+						<option value="A" selected="true">Excellent</option>
+						</select>
+					    </td>
+					</tr>
+					
+
+					 <tr>
+						<td width="240" align="right" valign="top">Suggestions / Special Comments</td>
+						<td ><br><textarea id="txtComments" name="txtComments" cols="50" rows="8" wrap="physical"></textarea>
+						<div class="error" id="CommentError">
+							(Please enter your Suggestions.)</div>
+						</td>
+					</tr>
+
+					<tr>
+						<td width="256" align="right">
+						<input type="submit" value="Submit" id="B1" name="B1"></td>
+						<td><input type="reset" value="Reset" name="B2"></td>
+					</tr>
+				</table>
+				</div>
+			</form>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+	</td>
+	</tr>
+	</table>
+	<meta http-equiv="Content-Type" content="text/html; charset=unicode">
+<meta content="Microsoft FrontPage 5.0" name="GENERATOR">
+<table border="0" width="760" cellspacing="0" cellpadding="0" id="table3">
+
+<tbody><tr>
+
+<td>
+
+<a href="http://www.bvicam.ac.in/indiacom">Home</a>&nbsp;. 
+
+<a href="javascript:history.back()">Back</a>&nbsp;. <a href="Contact%20Us.html">Contact 
+
+Us</a>&nbsp;.
+
+<a href="faqs.html">FAQs</a>
+
+</td>
+
+
+
+<td align="right">
+
+<a href="http://www.bvicam.ac.in/">www.bvicam.ac.in</a>
+
+</td>
+
+</tr>
+
+</tbody></table></div>
+
+</div>
+
+</body>
+
+
+<!-- Mirrored from bvicam.ac.in/indiacom/submitFeedback.asp by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 18 Oct 2019 11:01:56 GMT -->
+</html>

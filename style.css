@@ -1,0 +1,41 @@
+*{
+    margin: 0;padding: 0;
+}
+body{
+    padding:1rem;
+    max-width: 960px;
+    margin: 0 auto;
+    font-size:16px;
+    line-height: 1.4;
+
+}
+@media (max-width:960px) {
+    body{
+        padding:0.5rem;
+        font-size:14px;
+    }
+}
+
+.carousel-height{
+    
+}
+.center {
+    margin: 0 auto;
+}
+.sm-text{
+    font-size:12px;
+}
+
+.md-text{
+    font-size:16px;
+}
+
+@media (max-width:576px){
+    .hide--mobile {
+        display: none;
+    }
+}
+
+a:hover{
+    color:rgb(0, 119, 255) !important;
+}
